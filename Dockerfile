@@ -1,4 +1,4 @@
-# Usage: docker run --restart=always -v /var/data/blockchain-xmr:/root/.bitmonero -p 18080:18080 -p 18081:18081 --name=monerod -td kannix/monero-full-node
+# Usage: docker run --restart=always -v /var/data/blockchain-xmr:/root/.bitmonero -p 18080:18080 -p 18081:18081 --name=monerod -td pandalism/monero-full-node
 FROM ubuntu:18.04 AS build
 
 ENV MONERO_VERSION=0.17.1.6 MONERO_SHA256=01bb6e18773a461a4dcfe2a6d4e4f7e1708b26634bc56696d68c539c3a66f81a
@@ -36,4 +36,4 @@ EXPOSE 18080 18081
 
 
 ENTRYPOINT ["./monerod"]
-CMD ["--non-interactive", "--restricted-rpc", "--rpc-bind-ip=0.0.0.0", "--confirm-external-bind", "--ban-list=block.txt", "--out-peers=16"]
+CMD ["--non-interactive", "--restricted-rpc", "--rpc-bind-ip=0.0.0.0", "--confirm-external-bind", "--ban-list=block.txt", "--out-peers=16", "--prune-blockchain"]
