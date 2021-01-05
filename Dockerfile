@@ -1,7 +1,7 @@
 # Usage: docker run --restart=always -v /var/data/blockchain-xmr:/root/.bitmonero -p 18080:18080 -p 18081:18081 --name=monerod -td pandalism/monero-full-node
 FROM ubuntu:18.04 AS build
 
-ENV MONERO_VERSION=0.17.1.6 MONERO_SHA256=01bb6e18773a461a4dcfe2a6d4e4f7e1708b26634bc56696d68c539c3a66f81a
+ENV MONERO_VERSION=0.17.1.8 MONERO_SHA256=b566652c5281970c6137c27dd15002fe6d4c9230bc37d81545b2f36c16e7d476
 
 
 RUN apt-get update && apt-get install -y curl bzip2
@@ -36,4 +36,4 @@ EXPOSE 18080 18081
 
 
 ENTRYPOINT ["./monerod"]
-CMD ["--non-interactive", "--restricted-rpc", "--rpc-bind-ip=0.0.0.0", "--confirm-external-bind", "--ban-list=block.txt", "--out-peers=16", "--prune-blockchain"]
+CMD ["--non-interactive", "--restricted-rpc", "--rpc-bind-ip=0.0.0.0", "--confirm-external-bind", "--ban-list=block.txt", "--out-peers=16", "--prune-blockchain", "--enable-dns-blocklist"]
