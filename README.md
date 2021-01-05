@@ -1,4 +1,4 @@
-# monero-full-node
+# monero-pruned-node
 
 Docker image to run a monero full network node but with pruning enabled
 
